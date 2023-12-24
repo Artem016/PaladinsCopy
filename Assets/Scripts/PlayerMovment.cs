@@ -2,9 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Fusion;
+using Unity.VisualScripting;
 
 public class PlayerMovment : NetworkBehaviour
 {
+    [SerializeField] Ball _prefabBall;
+
+    private Vector3 _forward = Vector3.forward;
     private Vector3 _velocity;
     private bool _jumpPressed;
 
@@ -15,6 +19,8 @@ public class PlayerMovment : NetworkBehaviour
 
     public float jumpForce = 5f;
     public float GravityValue = -9.81f;
+
+    [Networked] private TickTimer delay { get; set; }
 
     private void Awake()
     {
@@ -66,6 +72,32 @@ public class PlayerMovment : NetworkBehaviour
             _velocity = new Vector3(0, -1, 0);
         }
 
+        if (HasStateAuthority && delay.ExpiredOrNotRunning(Runner))
+        {
+            if (Input.GetKey(KeyCode.E))
+            {
+                delay = TickTimer.CreateFromSeconds(Runner, 0.5f);
+                Runner.Spawn(_prefabBall,
+                   transform.position + _forward, Quaternion.LookRotation(_forward),
+                   Object.InputAuthority, (runner, o) =>
+                   {
+                       var ball = o.GetComponent<Ball>();
+                       ball.transform.forward = transform.forward;
+                       ball.Init();
+                   });
+            }
+        }
+
+        
+
         _jumpPressed = false;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("bullet"))
+        {
+            Debug.Log("Убит");
+        }
     }
 }

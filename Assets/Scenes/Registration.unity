@@ -2593,10 +2593,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8201088488475931687}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: LoadScene
-        m_Mode: 3
+      - m_Target: {fileID: 8201088488475931688}
+        m_TargetAssemblyTypeName: CreateDBObjScript, Assembly-CSharp
+        m_MethodName: SignIn
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4926,7 +4926,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1962822171}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8201088488475931688}
+        m_TargetAssemblyTypeName: CreateDBObjScript, Assembly-CSharp
+        m_MethodName: SignUp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1962822171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5349,3 +5361,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22d10e8a2f891cf41b0e66ff6286daaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8201088488475931688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8201088488475931686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b49a1aba4e67af489123dc8c2c3edb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputLoginUp: {fileID: 1177910440}
+  inputPasswordUp: {fileID: 558938008}
+  inputPasswordRipeatUp: {fileID: 495181943}
+  InputLoginIn: {fileID: 1389056533}
+  InputPasswordIn: {fileID: 194656219}
